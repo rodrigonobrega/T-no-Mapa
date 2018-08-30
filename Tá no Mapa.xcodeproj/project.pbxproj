@@ -14,6 +14,7 @@
 		5B4C262A21378C1C00B5A899 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C262821378C1C00B5A899 /* LaunchScreen.storyboard */; };
 		5B4C263521378C1C00B5A899 /* Ta__no_MapaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C263421378C1C00B5A899 /* Ta__no_MapaTests.swift */; };
 		5B4C264021378C1C00B5A899 /* Ta__no_MapaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C263F21378C1C00B5A899 /* Ta__no_MapaUITests.swift */; };
+		5B4C264E21378E5900B5A899 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C264D21378E5900B5A899 /* StudentLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		5B4C263B21378C1C00B5A899 /* Tá no MapaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tá no MapaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4C263F21378C1C00B5A899 /* Ta__no_MapaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ta__no_MapaUITests.swift; sourceTree = "<group>"; };
 		5B4C264121378C1C00B5A899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B4C264D21378E5900B5A899 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				5B4C262621378C1C00B5A899 /* Assets.xcassets */,
 				5B4C262821378C1C00B5A899 /* LaunchScreen.storyboard */,
 				5B4C262B21378C1C00B5A899 /* Info.plist */,
+				5B4C264D21378E5900B5A899 /* StudentLocation.swift */,
 			);
 			path = "Tá no Mapa";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4C264E21378E5900B5A899 /* StudentLocation.swift in Sources */,
 				5B4C262221378C1B00B5A899 /* ViewController.swift in Sources */,
 				5B4C262021378C1B00B5A899 /* AppDelegate.swift in Sources */,
 			);
