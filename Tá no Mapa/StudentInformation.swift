@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct StudentLocation {
+struct StudentInformation {
 
     var objectId:String? //StudentLocation id
     
@@ -28,17 +28,18 @@ struct StudentLocation {
     
     var longitude:NSNumber? //a longitude da localização do aluno (varia de -180 a 180)
     
-    var createdAt:Date? //a data de criação da localização do aluno
+    var createdAt:String? //a data de criação da localização do aluno
     
     
-    var updatedAt:Date? //a data de atualização mais recente da localização do aluno
+    var updatedAt:String? //a data de atualização mais recente da localização do aluno
     
     var ACL:Any? //a lista de acesso e controle (ACL) do Parse, ou seja, as permissões, para esta entrada do StudentLocation
     //Tipo do Parse: ACL
     
 }
 
-extension StudentLocation {
+extension StudentInformation {
+    
     init?(json: [String: Any]) {
         self.objectId   = json["objectId"] as? String
         self.uniqueKey  = json["uniqueKey"] as? String
@@ -48,8 +49,8 @@ extension StudentLocation {
         self.mediaURL   = json["mediaURL"] as? String
         self.latitude   = json["latitude"] as? NSNumber
         self.longitude  = json["longitude"] as? NSNumber
-        self.createdAt  = json["createdAt"] as? Date
-        self.updatedAt  = json["updatedAt"] as? Date
+        self.createdAt  = json["createdAt"] as? String
+        self.updatedAt  = json["updatedAt"] as? String
         self.ACL        = json["ACL"] as? String // ?any
     }
 }

@@ -6,96 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ta&#x301; no Mapa/ViewController.swift"
-            timestampString = "557295622.692747"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "location()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ta__no_Mapa.ViewController.location() -&gt; ()"
-                  moduleName = "Ta&#x301; no Mapa"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rodrigo/Documents/workspace/Ta%CC%81%20no%20Mapa/Ta%CC%81%20no%20Mapa/ViewController.swift"
-                  timestampString = "557295622.7943259"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "1531">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Ta__no_Mapa.ViewController.location() -&gt; ()"
-                  moduleName = "Ta&#x301; no Mapa"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rodrigo/Documents/workspace/Ta%CC%81%20no%20Mapa/Ta%CC%81%20no%20Mapa/ViewController.swift"
-                  timestampString = "557295622.7970721"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ta&#x301; no Mapa/ViewController.swift"
-            timestampString = "557295622.693095"
+            filePath = "Ta&#x301; no Mapa/LoginViewController.swift"
+            timestampString = "559025834.789947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "locations()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ta&#x301; no Mapa/ViewController.swift"
-            timestampString = "557295622.693362"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "locations()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ta&#x301; no Mapa/ViewController.swift"
-            timestampString = "557295622.693776"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "locations()"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "getKeyboardHeight(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
