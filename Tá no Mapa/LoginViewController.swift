@@ -28,8 +28,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextField.text = "rodrigocorcino@gmail.com"
-        self.passwordTextField.text = "asdfasdf"
         self.setupLayout()
     }
     
