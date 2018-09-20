@@ -26,13 +26,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let kAccount = "account"
     private let kKey = "key"
     
+    // MARK: - UIViewController override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextField.text = "rodrigocorcino@gmail.com"
-        self.passwordTextField.text = "asdfasdf"
         self.setupLayout()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,6 +49,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         signUpButton.setAttributedTitle(attrStr, for: .normal)
     }
     
+    
+    // MARK: IBActions methods
     @IBAction func signUp(_ sender: Any) {
         let urlString = kSignUpLink
         let url = URL(string: urlString)!
@@ -91,9 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.performSegue(withIdentifier: self.kLocationSegue, sender: self)
                 }
                 self.posLogin()
-            
             }
-            
         }
     }
     
@@ -128,8 +126,7 @@ extension LoginViewController {
     // MARK: - keyboard methods
     @objc func keyboardWillShow(_ notification:Notification) {
         if (view.frame.origin.y == 0) {
-            
-            view.frame.origin.y -= 10//getKeyboardHeight(notification)
+            view.frame.origin.y -= 10
         }
     }
     
@@ -140,7 +137,7 @@ extension LoginViewController {
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        print("\(keyboardSize.cgRectValue.height) height")
+        
         return keyboardSize.cgRectValue.height
     }
     
