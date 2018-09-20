@@ -24,7 +24,6 @@ class FindLocationViewController: UIViewController {
     
     
     // MARK: - IBAction methods
-    
     @IBAction func findLocation(sender: UIButton) {
         
         guard let locationString = locationTextField.text, !(locationTextField.text?.isEmpty)! else {
@@ -60,7 +59,6 @@ class FindLocationViewController: UIViewController {
     
     fileprivate func goToLocation(_ locationString: String) {
         preLocation()
-        
         CLGeocoder().geocodeAddressString(locationString) { (placemark, error) in
             self.posLocation()
             guard error == nil else {

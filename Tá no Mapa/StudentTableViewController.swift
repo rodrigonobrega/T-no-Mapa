@@ -16,8 +16,7 @@ class StudentTableViewController: UITableViewController {
     private let kInvalidURL = "Invalid input URL"
     private let kOKButtonTitle = "Ok"
 
-    var students = [StudentInformation]()
-    
+    var students = [StudentInformation]()   
     
     // MARK: - UIViewController override methods and IBActions
     

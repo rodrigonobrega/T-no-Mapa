@@ -11,16 +11,16 @@ import MapKit
 
 class ShowNewLocationViewController: UIViewController {
     
+    @IBOutlet weak var mKMapView: MKMapView!
     var coordinate:CLLocationCoordinate2D?
     var locationString:String?
     var urlString:String?
-    
     var annotation = MKPointAnnotation()
+    
     private let kErrorTitle = "Error"
     private let kOkButtonTitle = "Ok"
     private let kMsgErro = "Erro ao adicionar usuário"
     
-    @IBOutlet weak var mKMapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
