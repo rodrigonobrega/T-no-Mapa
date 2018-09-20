@@ -8,33 +8,20 @@
 
 import UIKit
 
+// MARK: - Struct StudentInformation
 struct StudentInformation {
 
-    var objectId:String? //StudentLocation id
-    
-    
-    var uniqueKey:String? // uma chave extra (opcional) usada para identificar exclusivamente um StudentLocation; você deve preencher este valor usando sua identificação da conta da Udacity
-    
-    var firstName:String? //o nome do aluno que corresponde ao nome do perfil na Udacity
-    
-    var lastName:String? //o sobrenome do aluno que corresponde ao sobrenome do perfil na Udacity
-    
-    var mapString:String? //o string de localização usado para geocodificar a localização do aluno
-    
-    var mediaURL:String? //a URL informada pelo aluno
-
-    
-    var latitude:NSNumber? //  latitude da localização do aluno (varia de -90 a 90)
-    
-    var longitude:NSNumber? //a longitude da localização do aluno (varia de -180 a 180)
-    
-    var createdAt:String? //a data de criação da localização do aluno
-    
-    
-    var updatedAt:String? //a data de atualização mais recente da localização do aluno
-    
-    var ACL:Any? //a lista de acesso e controle (ACL) do Parse, ou seja, as permissões, para esta entrada do StudentLocation
-    //Tipo do Parse: ACL
+    var objectId:String?
+    var uniqueKey:String?
+    var firstName:String?
+    var lastName:String?
+    var mapString:String?
+    var mediaURL:String?
+    var latitude:NSNumber?
+    var longitude:NSNumber?
+    var createdAt:String?
+    var updatedAt:String?
+    var ACL:Any? //controle de permissões
     
 }
 
@@ -51,6 +38,6 @@ extension StudentInformation {
         self.longitude  = json["longitude"] as? NSNumber
         self.createdAt  = json["createdAt"] as? String
         self.updatedAt  = json["updatedAt"] as? String
-        self.ACL        = json["ACL"] as? String // ?any
+        self.ACL        = json["ACL"] as? String
     }
 }

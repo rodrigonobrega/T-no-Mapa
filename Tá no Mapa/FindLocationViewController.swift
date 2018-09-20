@@ -16,12 +16,20 @@ class FindLocationViewController: UIViewController {
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
+    private let kOnTheMap = "On the map"
+    private let kRequiredLocation = "Required location"
+    private let kLocationNotFound = "Location not found"
+    private let kOKButtonTitle = "Ok"
+    var frameFindnButton:CGRect?
+    
+    
+    // MARK: - IBAction methods
     
     @IBAction func findLocation(sender: UIButton) {
         
         guard let locationString = locationTextField.text, !(locationTextField.text?.isEmpty)! else {
-            let alert = UIAlertController.init(title: "Tá no mapa", message: "Informe o local", preferredStyle: .alert)
-            let okButton = UIAlertAction.init(title: "ok", style: .default, handler: nil)
+            let alert = UIAlertController.init(title: kOnTheMap, message: kRequiredLocation, preferredStyle: .alert)
+            let okButton = UIAlertAction.init(title: kOKButtonTitle, style: .default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
             return
@@ -29,8 +37,11 @@ class FindLocationViewController: UIViewController {
         goToLocation(locationString)
     }
     
-    var frameFindnButton:CGRect?
+    @IBAction func dismiss(_ sender: Any) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
     
+    // MARK: - FindLocationViewController methods
     func preLocation() {
         DispatchQueue.main.async {
             self.frameFindnButton = self.findButton.frame
@@ -46,15 +57,15 @@ class FindLocationViewController: UIViewController {
             self.findButton.frame = frameFindnButton
         }
     }
+    
     fileprivate func goToLocation(_ locationString: String) {
         preLocation()
-        
         
         CLGeocoder().geocodeAddressString(locationString) { (placemark, error) in
             self.posLocation()
             guard error == nil else {
-                let alert = UIAlertController.init(title: "Tá no mapa", message: "Local não encontrado", preferredStyle: .alert)
-                let okButton = UIAlertAction.init(title: "ok", style: .default, handler: nil)
+                let alert = UIAlertController.init(title: self.kOnTheMap, message: self.kLocationNotFound, preferredStyle: .alert)
+                let okButton = UIAlertAction.init(title: self.kOKButtonTitle, style: .default, handler: nil)
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
                 return
@@ -64,10 +75,7 @@ class FindLocationViewController: UIViewController {
         }
     }
    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navigation method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let locationViewController = segue.destination as? ShowNewLocationViewController {
             if let cordinate = sender as? CLLocationCoordinate2D {
@@ -83,10 +91,6 @@ class FindLocationViewController: UIViewController {
                 locationViewController.urlString = urlString
             }
         }
-    }
-    
-    @IBAction func dismiss(_ sender: Any) {
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
 }

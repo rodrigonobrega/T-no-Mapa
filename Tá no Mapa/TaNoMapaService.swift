@@ -32,6 +32,7 @@ class TaNoMapaService: NSObject {
     typealias userDictionary = ([String:Any]) -> Void
     typealias addUserSuccess = (Bool) -> Void
     
+    // MARK: Capture student locations
     func locations(closure: @escaping ([StudentInformation]) -> Void) {
         
         let request = NSMutableURLRequest(url: URL(string: TaNoMapaService.kURLStudentsLocation)!)
@@ -67,7 +68,7 @@ class TaNoMapaService: NSObject {
     }
     
     
-    
+    // MARK: - Add new user(user, location and url)
     static func addUser(annotation: MKPointAnnotation, completion: @escaping addUserSuccess) {
         let locationString = annotation.title
         let mediaURL = annotation.subtitle
@@ -95,8 +96,7 @@ class TaNoMapaService: NSObject {
         task.resume()
     }
     
-    
-    
+    // MARK: - Login method
     func login(email: String, password:String, completion: @escaping userDictionary) {
         
         let request = NSMutableURLRequest(url: URL(string: TaNoMapaService.kURLStudentsSession)!)
@@ -106,26 +106,23 @@ class TaNoMapaService: NSObject {
         request.httpBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil {
                 return
             }
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
-            
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-            
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: newData!, options: .mutableContainers) as? [String:AnyObject] {
-                        completion(json)
-                    }
-                } catch {
-                    completion([TaNoMapaService.kErrorKey: TaNoMapaService.kErrorMessage])
+            do {
+                if let json = try JSONSerialization.jsonObject(with: newData!, options: .mutableContainers) as? [String:AnyObject] {
+                    completion(json)
                 }
+            } catch {
+                completion([TaNoMapaService.kErrorKey: TaNoMapaService.kErrorMessage])
+            }
         }
         task.resume()
     }
     
-    
+    // MARK: - Logout method
     func logout() {
         let request = NSMutableURLRequest(url: URL(string: TaNoMapaService.kURLStudentsSession)!)
         request.httpMethod = TaNoMapaService.kDelete
@@ -142,16 +139,16 @@ class TaNoMapaService: NSObject {
             if error != nil { // Handle error…
                 return
             }
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            
+            /* Logout! */
+            
         }
         task.resume()
     }
     
+    // MARK: - Update a logged user
     func updateUserWithKey(_ userKey: String) {
         let url = "\(TaNoMapaService.kURLStudentsLocation)?where=%7B%22uniqueKey%22%3A%22\(userKey)%22%7D"
-        
         
         let request = NSMutableURLRequest(url: URL(string: url)!)
         request.addValue(TaNoMapaService.kHeaderFieldApplicationValue, forHTTPHeaderField: TaNoMapaService.kHeaderFieldApplicationKey)
