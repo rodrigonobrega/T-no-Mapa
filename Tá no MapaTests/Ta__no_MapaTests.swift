@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Ta__no_Mapa
+//@testable import Ta__no_Mapa
 
 class Ta__no_MapaTests: XCTestCase {
     

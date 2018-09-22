@@ -20,6 +20,7 @@
 		5B4C264E21378E5900B5A899 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C264D21378E5900B5A899 /* StudentInformation.swift */; };
 		5B8762E121488BEE00BD11C2 /* ShowNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8762E021488BEE00BD11C2 /* ShowNewLocationViewController.swift */; };
 		5BBEF657213F91460089A8B8 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBEF656213F91460089A8B8 /* StudentTableViewCell.swift */; };
+		9AB84CB921543A4E00B50058 /* TaNoMapaDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB84CB821543A4E00B50058 /* TaNoMapaDataSource.swift */; };
 		9ADC52D721481D5B009E1447 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADC52D621481D5B009E1447 /* FindLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		5B4C264D21378E5900B5A899 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		5B8762E021488BEE00BD11C2 /* ShowNewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNewLocationViewController.swift; sourceTree = "<group>"; };
 		5BBEF656213F91460089A8B8 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
+		9AB84CB821543A4E00B50058 /* TaNoMapaDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaNoMapaDataSource.swift; sourceTree = "<group>"; };
 		9ADC52D621481D5B009E1447 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,10 +113,10 @@
 		5B4C261E21378C1B00B5A899 /* Tá no Mapa */ = {
 			isa = PBXGroup;
 			children = (
+				5B7168572155E02B00DC41DA /* Util */,
 				5B6620672151FF1B00856B03 /* View */,
 				5B405D89213CB78D00F61D56 /* LoginViewController.swift */,
 				5B4C264D21378E5900B5A899 /* StudentInformation.swift */,
-				5B405D8B213CC61600F61D56 /* TaNoMapaService.swift */,
 				5B405D8D213CC8DD00F61D56 /* MapViewController.swift */,
 				5B405D8F213CC99C00F61D56 /* StudentTableViewController.swift */,
 				5BBEF656213F91460089A8B8 /* StudentTableViewCell.swift */,
@@ -160,6 +162,15 @@
 				5B4C262621378C1C00B5A899 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5B7168572155E02B00DC41DA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5B405D8B213CC61600F61D56 /* TaNoMapaService.swift */,
+				9AB84CB821543A4E00B50058 /* TaNoMapaDataSource.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B405D8E213CC8DD00F61D56 /* MapViewController.swift in Sources */,
+				9AB84CB921543A4E00B50058 /* TaNoMapaDataSource.swift in Sources */,
 				5B405D8A213CB78D00F61D56 /* LoginViewController.swift in Sources */,
 				5B405D90213CC99C00F61D56 /* StudentTableViewController.swift in Sources */,
 				9ADC52D721481D5B009E1447 /* FindLocationViewController.swift in Sources */,

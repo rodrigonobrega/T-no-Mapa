@@ -15,7 +15,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
-    var frameLoginButton:CGRect?
     
     private let kErrorTitle = "Error"
     private let kErrorKey = "error"
@@ -25,6 +24,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let kSignUpLink = "https://auth.udacity.com/sign-up"
     private let kAccount = "account"
     private let kKey = "key"
+    private let kEmptyEmailorPassword = "Empty Email or Password"
+    private let kInvalidEmailorPassword = "Invalid Email"
+    
     
     // MARK: - UIViewController override methods
     override func viewDidLoad() {
@@ -49,7 +51,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         signUpButton.setAttributedTitle(attrStr, for: .normal)
     }
     
-    
     // MARK: IBActions methods
     @IBAction func signUp(_ sender: Any) {
         let urlString = kSignUpLink
@@ -57,48 +58,77 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIApplication.shared.openURL(url)
     }
     
-    func preLogin() {
-        DispatchQueue.main.async {        
-            self.frameLoginButton = self.loginButton.frame
-            self.loginButton.frame = CGRect.zero
-            self.view.endEditing(true)
-            self.loadingActivity.startAnimating()
+    func validateTexts() -> Bool {
+        var errorMsg:String?
+        
+        if (self.passwordTextField.text?.isEmpty)!  ||
+            (self.emailTextField.text?.isEmpty)! {
+            errorMsg = kEmptyEmailorPassword
+        } else if !(self.emailTextField.text?.isValidEmail())! {
+            errorMsg = kInvalidEmailorPassword
         }
+        
+        if (errorMsg != nil) {
+            let alert = UIAlertController.init(title: self.kErrorTitle, message: errorMsg, preferredStyle: .alert)
+            let okButton = UIAlertAction.init(title: self.kOkButtonTitle, style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        
+        return true
     }
     
     @IBAction func login(_ sender: Any) {
-        preLogin()
+        if !validateTexts() {
+            return
+        }
+        DispatchQueue.main.async {
+            self.loginButton.isHidden = true
+            self.view.endEditing(true)
+            self.loadingActivity.startAnimating()
+        }
+        
         let service = TaNoMapaService.init()
         
-        service.login(email: self.emailTextField.text!, password: self.passwordTextField.text!) { (retorno) in
-            
-            DispatchQueue.main.async {
-                if let msgErro = retorno[self.kErrorKey] as? String{
-                    let alert = UIAlertController.init(title: self.kErrorTitle, message: msgErro, preferredStyle: .alert)
-                    let okButton = UIAlertAction.init(title: self.kOkButtonTitle, style: .default, handler: nil)
-                    alert.addAction(okButton)
+        self.view.endEditing(true)
+        service.login(email: self.emailTextField.text!, password: self.passwordTextField.text!) { (retorno, errorMessage) in
+             self.posLogin()
+            if errorMessage != nil {
+                let alert = UIAlertController.init(title: self.kErrorTitle, message: errorMessage, preferredStyle: .alert)
+                let okButton = UIAlertAction.init(title: self.kOkButtonTitle, style: .default, handler: nil)
+                alert.addAction(okButton)
+                DispatchQueue.main.async {
                     self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.emailTextField.text = String()
-                    self.passwordTextField.text = String()
-                    
-                    
-                    if let account = retorno[self.kAccount] as? NSDictionary {
-                        if let key = account[self.kKey] as? String {
-                            TaNoMapaService().updateUserWithKey(key)
-                        }}
-                    
-                    self.performSegue(withIdentifier: self.kLocationSegue, sender: self)
                 }
-                self.posLogin()
+                return
             }
+            
+            if let msgErro = retorno![self.kErrorKey] as? String{
+                let alert = UIAlertController.init(title: self.kErrorTitle, message: msgErro, preferredStyle: .alert)
+                let okButton = UIAlertAction.init(title: self.kOkButtonTitle, style: .default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.emailTextField.text = String()
+                self.passwordTextField.text = String()
+                
+                if let account = retorno![self.kAccount] as? NSDictionary {
+                    if let key = account[self.kKey] as? String {
+                        TaNoMapaService().updateUserWithKey(key)
+                    }}
+                
+                self.performSegue(withIdentifier: self.kLocationSegue, sender: self)
+            }
+           
+            
         }
     }
     
     func posLogin() {
-        self.loadingActivity.stopAnimating()
-        if let frameLoginButton = self.frameLoginButton {
-            self.loginButton.frame = frameLoginButton
+        DispatchQueue.main.async {
+            self.loadingActivity.stopAnimating()
+            self.loginButton.isHidden = false
         }
     }
     
@@ -141,7 +171,11 @@ extension LoginViewController {
         return keyboardSize.cgRectValue.height
     }
     
-    
-    
-    
+}
+
+extension String {
+    func isValidEmail() -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
 }
