@@ -26,8 +26,15 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     // MARK: IBActions and MapViewController methods
     @IBAction func refreshLocations() {
         let service = TaNoMapaService.init()
-        service.locations { (students) in
-            self.addAnnotationsStudents(students)
+        service.locations { (students, errorMessage) in
+            if errorMessage != nil  {
+                let alert = UIAlertController.init(title: self.kAlertTitle, message: self.kInvalidURL, preferredStyle: .alert)
+                let okButton = UIAlertAction.init(title: self.kOKButtonTitle, style: .default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            } else if let students = students {
+                self.addAnnotationsStudents(students)
+            }
         }
     }
     
